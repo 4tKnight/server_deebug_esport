@@ -42,7 +42,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 
-app.use('/user_auth', require('./routes/registration'));
+app.use('/user_registration', require('./routes/registration'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
