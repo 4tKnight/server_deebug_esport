@@ -30,6 +30,7 @@ router.post("/register", upload.single("image"), async (req, res) => {
     const player = new Player;
     player.fullname = fullname;
     player.phone_no = phone_no;
+    player.ign = ign;
     player.email = email;
     player.teamName = teamName || "";
     player.img_url = result.secure_url;
@@ -49,7 +50,7 @@ router.post("/register", upload.single("image"), async (req, res) => {
 });
 
 // view registered players endpoint
-router.post("/register", async (req, res) => {
+router.post("/view_players", async (req, res) => {
   try {
     let registered_players = await Player.find({ }).lean();
 
