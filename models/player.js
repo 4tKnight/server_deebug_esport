@@ -10,7 +10,11 @@ const playerSchema = mongoose.Schema({
     timestamp: Number,
     teamName: String, 
     payment_method: String,
-    payment_status: String
+    payment_status: String,
+    game_choice: String,
+    reg_day: String,
+    reg_month: String,
+    reg_year: String
 }, {collection: 'registered_players'});
 
 const model = mongoose.model('Player', playerSchema);

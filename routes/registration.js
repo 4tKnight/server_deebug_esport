@@ -7,10 +7,10 @@ const cloudinary = require("../utils/cloudinary");
 
 // register endpoint
 router.post("/register", upload.single("image"), async (req, res) => {
-  const { fullname, phone_no, email, ign, teamName, payment_method, payment_status } = req.body;
+  const { fullname, game_choice, reg_day, reg_month, reg_year, phone_no, email, ign, teamName, payment_method, payment_status } = req.body;
 
   // check for required fields
-  if (!fullname || !phone_no || !email || !ign || !payment_method || !payment_status || !req.file) {
+  if (!fullname || !phone_no || !email || !ign || !payment_method || !payment_status || !req.file || !reg_day || !reg_month || !reg_year || !game_choice) {
     return res.status(400).send({ status: "error", msg: "All fields should be filled" });
   }
 
@@ -38,6 +38,10 @@ router.post("/register", upload.single("image"), async (req, res) => {
     player.payment_method = payment_method;
     player.timestamp = timestamp;
     player.payment_status = payment_status;
+    player.reg_day = reg_day;
+    player.reg_month = reg_month;
+    player.reg_year = reg_year;
+    player.game_choice = game_choice;
 
     await player.save();
 
